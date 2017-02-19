@@ -1,0 +1,72 @@
+<!-- index.html -->
+<!doctype html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchTodo">
+
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Optimize mobile viewport -->
+    <title>Task Box</title>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- load bootstrap -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- load bootstrap -->
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+
+    <!-- load angular -->
+    <script src="core.js"></script>
+
+  <script src="js/moment.js"></script>
+
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+
+<body ng-controller="mainController">
+    <div class="container">
+        <br>
+        <!-- HEADER AND TODO COUNT -->
+        <h2 class="green">TO-DO <span class="label label-info">{{ todos.length }}</span></h2>
+        <hr class="green_hr">
+        <!-- TODO LIST -->
+        <div id="todo-list" class="row">
+            <!-- LOOP OVER THE TODOS IN $scope.todos -->
+            <h4>
+            <div class="checkbox row" ng-repeat="todo in todos">
+                <div class="col-sm-3"><label for="checkbox1">
+                       {{ todo.text }} 
+                    </label>
+                </div>
+                <div class="col-sm-9">
+                    <small class="date" id="date">{{ todo.created }}</small>
+                    <buttom id="checkbox1" class="btn btn_delete" ng-click="deleteTodo(todo._id)"> <span class="glyphicon glyphicon-remove green delete" aria-hidden="true"></span></buttom>
+                </div>
+                
+                
+            </div>
+            </h4>
+        </div>
+    </div>
+    <!-- FORM TO CREATE TODOS -->
+    <div id="todo-form" class="row">
+        
+            <form>
+                <div class="input-group">
+                    <input type="text" class="form-control input-lg text-center input1" placeholder="TO-DO task" ng-model="formData.text">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-lg button1" ng-click="createTodo()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                    </span>
+                </div>
+                <!-- /input-group -->
+            </form>
+        
+     <script src="js/index.js"></script>
+</body>
+
+</html>

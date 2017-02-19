@@ -1,0 +1,60 @@
+body{
+        background-color: #1E1A25;
+        color: white;
+
+
+
+}
+
+.green{
+
+    color: #39FAB4;
+}
+
+.label-info{
+    background-color: #39FAB4;
+    border-radius: 50%;
+    color:#1E1A25; 
+    
+}
+
+.green_hr{
+    border-top: 1px solid #39FAB4;
+}
+
+#todo-form{
+
+    position: fixed;
+    width: 90%;
+    bottom: 0;
+    left: 50%;
+    margin-left: -43.5%;
+
+}
+
+.button1{
+    background-color: transparent;
+    color: #39FAB4;
+    border: none;
+}
+
+.button1::hover{
+    background-color: #39FAB4;
+    color: #1E1A25;
+}
+
+.input1{
+    background: transparent;
+    border-color: #39FAB4;
+    color: white;
+}
+
+#todo-list{
+    margin-left: 30px;
+}
+
+.delete:hover{
+    color: #f45c42;
+
+}
+
