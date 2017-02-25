@@ -52,6 +52,43 @@ module.exports = function() {
 		});
 	});
 
+	app.patch('/api/todos/:todo_id', function(req, res) {
+		
+		Todo.findById(req.params.todo_id, function (err, todo) {  
+    // Handle any possible database errors
+    if (err) {
+        res.status(500).send(err);
+    } else {
+        // Update each attribute with any possible attribute that may have been submitted in the body of the request
+        // If that attribute isn't in the request body, default back to whatever it was before.
+        
+		
+		todo.done = !todo.done;
+        
+        // Save the updated document back to the database
+        todo.save(function (err, todo) {
+            if (err) {
+                res.status(500).send(err)
+            }
+
+
+			Todo.find(function(err, todos) {
+				if (err)
+					res.send(err)
+					
+				res.json(todos);
+			});
+			
+           
+        });
+
+		
+    }
+});
+
+
+	});
+
 
 app.get('*', function(req, res) {
 		res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)

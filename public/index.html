@@ -17,14 +17,10 @@
     <!-- SPELLS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <!-- load jquery -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
     <!-- load angular -->
     <script src="core.js"></script>
-
-  <script src="js/moment.js"></script>
-
-
+    <script src="js/moment.js"></script>
 </head>
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
 
@@ -35,38 +31,54 @@
         <h2 class="green">TO-DO <span class="label label-info">{{ todos.length }}</span></h2>
         <hr class="green_hr">
         <!-- TODO LIST -->
-        <div id="todo-list" class="row">
+        <div id="todo-list">
             <!-- LOOP OVER THE TODOS IN $scope.todos -->
             <h4>
-            <div class="checkbox row" ng-repeat="todo in todos">
-                <div class="col-sm-3"><label for="checkbox1">
-                       {{ todo.text }} 
+                <div ng-if="!todo.done" class="checkbox row" ng-repeat="todo in todos">
+                    <div class="col-xs-4"><label for="checkbox1">
+                      <div> {{ todo.text }} </div> 
+                      
                     </label>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="left-column">
+                            <small class="date" id="date">{{ todo.created }}</small>
+                            <buttom id="checkbox1" class="btn btn_delete" ng-click="doneTodo(todo._id)"> <span class="glyphicon glyphicon-ok green delete" aria-hidden="true"></span></buttom>
+                            <buttom id="checkbox1" class="btn btn_delete" ng-click="deleteTodo(todo._id)"> <span class="glyphicon glyphicon-remove red delete" aria-hidden="true"></span></buttom>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-9">
-                    <small class="date" id="date">{{ todo.created }}</small>
-                    <buttom id="checkbox1" class="btn btn_delete" ng-click="deleteTodo(todo._id)"> <span class="glyphicon glyphicon-remove green delete" aria-hidden="true"></span></buttom>
+                <hr class="green_hr">
+                <div ng-if="todo.done" class="checkbox row" ng-repeat="todo in todos">
+                    <div class="col-xs-4"><label for="checkbox1">
+                      
+                      <div  class="done"> {{ todo.text }} </div> 
+                    </label>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="left-column">
+                            <small class="date" id="date">{{ todo.created }} {{ todo.type }}</small>
+                            <buttom id="checkbox1" class="btn btn_delete" ng-click="doneTodo(todo._id)"> <span class="glyphicon glyphicon-ok grey delete" aria-hidden="true"></span></buttom>
+                            <buttom id="checkbox1" class="btn btn_delete" ng-click="deleteTodo(todo._id)"> <span class="glyphicon glyphicon-remove red delete" aria-hidden="true"></span></buttom>
+                        </div>
+                    </div>
                 </div>
-                
-                
-            </div>
             </h4>
         </div>
     </div>
     <!-- FORM TO CREATE TODOS -->
     <div id="todo-form" class="row">
-        
-            <form>
-                <div class="input-group">
-                    <input type="text" class="form-control input-lg text-center input1" placeholder="TO-DO task" ng-model="formData.text">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary btn-lg button1" ng-click="createTodo()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-                    </span>
-                </div>
-                <!-- /input-group -->
-            </form>
-        
-     <script src="js/index.js"></script>
+        <form>
+            <div class="input-group">
+                <input type="text" class="form-control input-lg text-center input1" placeholder="TO-DO task" ng-model="formData.text">
+                <span class="input-group-btn">
+                        <button type="submit" class="btn btn-lg button1" ng-click="createTodo()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                        
+                </span>
+            </div>
+            <!-- /input-group -->
+        </form>
+        <script src="js/index.js"></script>
 </body>
 
 </html>

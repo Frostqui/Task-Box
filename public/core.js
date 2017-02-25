@@ -70,4 +70,29 @@ function mainController($scope, $http) {
             });
     };
 
+
+
+    $scope.doneTodo = function (id) {
+        $http.patch('/api/todos/' + id)
+            
+            .success(function (data) {
+
+                  angular.forEach(data, function (value, key) {
+
+                value.created = moment(value.created).fromNow();
+
+
+
+
+            });
+
+
+                $scope.todos = data;
+                console.log(data);
+            })
+            .error(function (data) {
+                console.log('Error: ' + data);
+            });
+    };
+
 }

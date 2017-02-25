@@ -1,5 +1,7 @@
 const {app, BrowserWindow} = require('electron');
 
+
+
 var path = require('path')
 
 fs = require('fs');
@@ -27,7 +29,7 @@ function createWindow () {
 
 
   // Open the DevTools.
-  win.webContents.openDevTools();
+ // win.webContents.openDevTools();
 
   win.focus();
 
