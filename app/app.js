@@ -7,7 +7,7 @@ module.exports = () => {
   mongoose = require('mongoose');      
 
 
- mongoose.connect('mongodb://Frostq:Diego45200@ds129018.mlab.com:29018/frost_database');     // connect to mongoDB database on modulus.io
+ mongoose.connect('mongodb://Frostq:*****SUSTITUIR POR CONTRASEÑA********@ds129018.mlab.com:29018/frost_database');     // connect to mongoDB database on modulus.io
 
 
   config = JSON.parse(fs.readFileSync('config.json'));
